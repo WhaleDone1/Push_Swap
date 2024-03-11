@@ -1,4 +1,16 @@
-static char **ft_free(char **str)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/11 09:16:28 by bcarpent          #+#    #+#             */
+/*   Updated: 2024/03/11 09:16:51 by bcarpent         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+static char	**ft_free(char **str)
 {
     int i;
 
@@ -12,7 +24,7 @@ static char **ft_free(char **str)
     return (NULL);
 }
 
-static char *ft_strndup(const char *src, int n)
+static char	*ft_strndup(const char *src, int n)
 {
     int i;
     int j;
@@ -34,7 +46,7 @@ static char *ft_strndup(const char *src, int n)
     return (dest);
 }
 
-static int range_to_sep(const char *str, char charset)
+static int	range_to_sep(const char *str, char charset)
 {
     int i;
 
@@ -44,7 +56,7 @@ static int range_to_sep(const char *str, char charset)
     return (i);
 }
 
-static int count_word(const char *str, char charset)
+static int	count_word(const char *str, char charset)
 {
     int i;
     int word;
@@ -65,7 +77,7 @@ static int count_word(const char *str, char charset)
     return (word);
 }
 
-char **ft_split(const char *str, char c)
+char	**ft_split(const char *str, char c)
 {
     int i;
     char **split;
