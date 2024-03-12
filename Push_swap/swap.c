@@ -6,12 +6,11 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 09:11:35 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/11 09:30:46 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:27:18 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
-
 
 void	swap_a(t_list **stack_head_a)
 {
