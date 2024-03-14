@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prepare_push_a.c                                   :+:      :+:    :+:   */
+/*   prepare_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 11:41:10 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/12 14:22:58 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:50:43 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void set_target_a(t_list *stack_head_a, t_list *stack_head_b)
 {
-	t_list	*target;
-	t_list	*tmp_match;
-	long	match;
+	t_list *target;
+	t_list *tmp_match;
+	long match;
 
 	while (stack_head_a != NULL)
 	{
-		match = -9223372036854775808;
-		tmp_match = b;
+		match = -9223372036854775807;
+		tmp_match = stack_head_b;
 		while (tmp_match)
 		{
 			if (tmp_match->data > stack_head_a->data && tmp_match->data > match)
@@ -31,7 +31,7 @@ static void set_target_a(t_list *stack_head_a, t_list *stack_head_b)
 			}
 			tmp_match = tmp_match->next;
 		}
-		if (match == -9223372036854775808)
+		if (match == -9223372036854775807)
 			stack_head_a->target = find_biggest_nb(stack_head_b);
 		else
 			stack_head_a->target = target;
@@ -39,14 +39,40 @@ static void set_target_a(t_list *stack_head_a, t_list *stack_head_b)
 	}
 }
 
-static void sort_cost_a(t_list *stack_head_a, t_list *stack_head_b)
+static void set_target_b(t_list *stack_head_a, t_list *stack_head_b)
 {
-	int	stack_len_a;
-	int	stak_len_b;
+	t_list *target;
+	t_list *tmp_match;
+	long match;
+
+	while (stack_head_a != NULL)
+	{
+		match = 9223372036854775807;
+		tmp_match = stack_head_a;
+		while (tmp_match)
+		{
+			if (tmp_match->data > stack_head_b->data && tmp_match->data < match)
+			{
+				match = tmp_match->data;
+				target = tmp_match;
+			}
+			tmp_match = tmp_match->next;
+		}
+		if (match == 9223372036854775807)
+			stack_head_b->target = find_smallest_nb(stack_head_a);
+		else
+			stack_head_a->target = target;
+		stack_head_a = stack_head_a->next;
+	}
+}
+
+static void sort_cost(t_list *stack_head_a, t_list *stack_head_b)
+{
+	int stack_len_a;
+	int stack_len_b;
 
 	stack_len_a = list_len(stack_head_a);
 	stack_len_b = list_len(stack_head_b);
-	
 
 	while (stack_head_a != NULL)
 	{
@@ -58,39 +84,20 @@ static void sort_cost_a(t_list *stack_head_a, t_list *stack_head_b)
 		else
 			stack_head_a->cost += stack_len_b - (stack_head_a->target->index);
 		stack_head_a = stack_head_a->next;
-	}	
+	}
 }
 
-static void set_cheapest(t_list *stack_head)
-{
-	long	cheapest_cost;
-	t_list	*cheapest_node;
-
-	if (!stack_head)
-		return ;
-	cheapest_cost = 9223372036854775807;
-	while (stack_head != NULL)
-	{
-		stack_head->cheapest = 0;
-		stack_head = stack_head->next;
-	}
-	while (stack_head != NULL)
-	{
-		if (stack_head->cost < cheapest_cost)
-		{
-			cheapest_cost = stack_head->cost;
-			cheapest_node = stack_head;
-		}
-		stack_head = stack_head->next;
-	}
-	cheapest_node->cheapest = 1;
-}
-
-void	prepare_push_a(t_list *stack_head_a, t_list *stack_head_b)
+void prepare_move_a(t_list *stack_head_a, t_list *stack_head_b)
 {
 	set_index(stack_head_a);
 	set_index(stack_head_b);
 	set_target_a(stack_head_a, stack_head_b);
 	sort_cost(stack_head_a, stack_head_b);
-	set_cheapest(stack_head_a);
+}
+
+void prepare_move_b(t_list *stack_head_a, t_list *stack_head_b)
+{
+	set_index(stack_head_a);
+	set_index(stack_head_b);
+	set_target_b(stack_head_a, stack_head_b);
 }

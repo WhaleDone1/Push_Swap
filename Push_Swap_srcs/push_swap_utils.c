@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:15:55 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/12 16:41:57 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:55:15 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,20 @@
 		ft_printf("NULL");
 }*/
 
-/*t_list	*change_list_head(t_list *stackhead, int newdata)
+int list_len(t_list *stack_head)
 {
-	t_list	*newnode = malloc(sizeof(t_list));
-	newnode->data = newdata;
-	if (stackhead != NULL)
-		newnode->next = stackhead;
-	else
-		newnode->next = NULL;
-	return (newnode);
-}*/
-
-int	list_len(t_list **stack_head)
-{
-	int	i;
+	int i;
 
 	i = 0;
-	while (*stack_head != NULL)
+	while (stack_head != NULL)
 	{
 		i++;
-		*stack_head = (*stack_head)->next;
+		stack_head = stack_head->next;
 	}
 	return (i);
 }
 
-t_list	*find_biggest_nb(t_list *stack_head)
+t_list *find_biggest_nb(t_list *stack_head)
 {
 	t_list *biggest_nb;
 
@@ -61,16 +50,44 @@ t_list	*find_biggest_nb(t_list *stack_head)
 	return (biggest_nb);
 }
 
-void	set_index(t_list *stack_head)
+t_list *find_smallest_nb(t_list *stack_head)
 {
-	int	i;
+	t_list *smallest_nb;
+
+	smallest_nb = stack_head;
+	while (stack_head->next != NULL)
+	{
+		stack_head = stack_head->next;
+		if (smallest_nb->data > stack_head->data)
+			smallest_nb = stack_head;
+	}
+	return (smallest_nb);
+}
+
+t_list *find_cheapest_cost(t_list *stack_head)
+{
+	t_list *cheapest;
+
+	cheapest = stack_head;
+	stack_head = stack_head->next;
+	while (stack_head)
+	{
+		if (stack_head->cost < cheapest->cost)
+			cheapest = stack_head;
+		stack_head = stack_head->next;
+	}
+	return (cheapest);
+}
+
+void set_index(t_list *stack_head)
+{
+	int i;
 
 	i = 0;
-	if (!stack_head)
-		return ;
 	while (stack_head != NULL)
 	{
 		stack_head->index = i;
 		i++;
+		stack_head = stack_head->next;
 	}
 }

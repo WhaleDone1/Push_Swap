@@ -3,23 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: barpent <barpent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/11 09:19:23 by bcarpent          #+#    #+#              #
-#    Updated: 2024/03/11 10:31:40 by bcarpent         ###   ########.fr        #
+#    Updated: 2024/03/14 13:19:21 by barpent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
-NAME = libft.a
+NAME = push_swap
 LIBFT_DIR = Libft
-PUSH_SWAP_DIR = Push_swap
+PUSH_SWAP_DIR = Push_swap_srcs
 PRINTF_DIR = Printf
 SRCS =	$(LIBFT_DIR)/ft_atol.c $(LIBFT_DIR)/ft_split.c \
 	$(PUSH_SWAP_DIR)/swap.c $(PUSH_SWAP_DIR)/push.c $(PUSH_SWAP_DIR)/rotate.c \
-	$(PUSH_SWAP_DIR)/reverse_rotate.c \
+	$(PUSH_SWAP_DIR)/reverse_rotate.c $(PUSH_SWAP_DIR)/push_swap.c $(PUSH_SWAP_DIR)/push_swap_utils.c\
+	$(PUSH_SWAP_DIR)/prepare_move.c $(PUSH_SWAP_DIR)/move_a_to_b.c $(PUSH_SWAP_DIR)/move_b_to_a.c \
+	$(PUSH_SWAP_DIR)/sort.c \
 	$(PRINTF_DIR)/ft_printf.c $(PRINTF_DIR)/ft_utils_printf.c $(PRINTF_DIR)/ft_putnbrptr_printf.c \
 	$(PRINTF_DIR)/ft_putnbrhexa_printf.c $(PRINTF_DIR)/ft_itoa.c $(PRINTF_DIR)/ft_uitoa.c
 

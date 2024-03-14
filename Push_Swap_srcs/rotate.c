@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 09:11:15 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/11 09:30:09 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/03/14 10:44:37 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 
-void	rotate_a(t_list **stack_head_a)
+void rotate_a(t_list **stack_head_a)
 {
 	t_list *tmp_ptr;
 
@@ -27,7 +27,7 @@ void	rotate_a(t_list **stack_head_a)
 	tmp_ptr->next = NULL;
 }
 
-void	rotate_b(t_list **stack_head_b)
+void rotate_b(t_list **stack_head_b)
 {
 	t_list *tmp_ptr;
 
@@ -42,7 +42,7 @@ void	rotate_b(t_list **stack_head_b)
 	tmp_ptr->next = NULL;
 }
 
-void	rotate_a_and_b(t_list **stack_head_a, t_list **stack_head_b)
+void rotate_a_and_b(t_list **stack_head_a, t_list **stack_head_b)
 {
 	if (!stack_head_a || !*stack_head_a || !stack_head_b || !*stack_head_b)
 		return;
@@ -50,3 +50,8 @@ void	rotate_a_and_b(t_list **stack_head_a, t_list **stack_head_b)
 	rotate_b(stack_head_b);
 }
 
+void move_rotate_a_and_b(t_list **stack_head_a, t_list **stack_head_b, t_list *cheapest)
+{
+	while ((*stack_head_a)->data != cheapest->data && (*stack_head_b)->data != cheapest->target->data)
+		rotate_a_and_b(stack_head_a, stack_head_b);
+}
