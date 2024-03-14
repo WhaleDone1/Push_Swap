@@ -19,6 +19,7 @@
 static void	append_node(t_list **stack_head, int n, int i)
 {
 	t_list *new_node;
+	t_list *current;
 
 	//if (!stack_head)
 	//	return ;
@@ -31,9 +32,10 @@ static void	append_node(t_list **stack_head, int n, int i)
 		*stack_head = new_node;
 	else
 	{
-		while ((*stack_head)->next != NULL)
-			*stack_head = (*stack_head)->next;
-		(*stack_head)->next = new_node;
+		current = *stack_head;
+		while (current->next != NULL)
+			current = current->next;
+		current->next = new_node;
 	}
 }
 
