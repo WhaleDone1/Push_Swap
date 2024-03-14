@@ -6,7 +6,7 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 09:12:39 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/14 12:56:57 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:44:00 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_list
         int data;
         int index;
         int cost;
-        int cheapest;
         struct s_list *target;
         struct s_list *next;
 } t_list;

@@ -6,7 +6,7 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:28 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/14 12:41:07 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:42:20 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int main(int argc, char **argv)
 	t_list *stack_b;
 
 	is_split = 0;
+	stack_b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (0);
 	else if (argc == 2)

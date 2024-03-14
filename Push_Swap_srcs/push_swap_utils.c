@@ -6,22 +6,11 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:15:55 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/14 12:55:15 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:41:00 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
-
-/*void	print_list(t_list *list)
-{
-	if (list != NULL)
-	{
-		ft_printf("%d->", list->data);
-		print_list(list->next);
-	}
-	else
-		ft_printf("NULL");
-}*/
 
 int list_len(t_list *stack_head)
 {
@@ -81,9 +70,8 @@ t_list *find_cheapest_cost(t_list *stack_head)
 
 void set_index(t_list *stack_head)
 {
-	int i;
+	int i = 0;
 
-	i = 0;
 	while (stack_head != NULL)
 	{
 		stack_head->index = i;
