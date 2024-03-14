@@ -40,8 +40,8 @@ all: ${NAME}
 -include ${DEPS}
 
 ${NAME}: ${OBJS}
-	@echo $(BOLD)$(GREEN_COLOR)Compiling the following files:$(X)$(CYAN_COLOR)[$(SRCS)]$(X) 
-	@ar rcs ${NAME} ${OBJS}
+	@echo $(BOLD)$(GREEN_COLOR)Compiling the following files:$(X)$(CYAN_COLOR)[$(SRCS)]$(X)
+	@${CC} ${FLAGS} -o ${NAME} ${OBJS}
 	@echo $(BOLD)$(GREEN_COLOR)Compilation done.
 
 %.o : %.c

@@ -105,7 +105,7 @@ int main(int argc, char **argv)
 	}
 	else
 		init_stack(&stack_a, argv + 1);
-	if (is_stack_sorted(stack_a) < 0)
+	if (is_stack_sorted(stack_a) == 0)
 	{
 		if (list_len(stack_a) == 2)
 			swap_a(&stack_a);
