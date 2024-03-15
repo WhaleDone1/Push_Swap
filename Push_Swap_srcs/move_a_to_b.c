@@ -17,12 +17,12 @@ static void prepare_stack_a(t_list **stack_head_a, t_list *cheapest, int stack_a
     if (cheapest->index <= (stack_a_len / 2))
     {
         while ((*stack_head_a)->data != cheapest->data)
-            rotate_a(stack_head_a);
+            rotate_a(stack_head_a, 1);
     }
     else
     {
         while ((*stack_head_a)->data != cheapest->data)
-            reverse_rotate_a(stack_head_a);
+            reverse_rotate_a(stack_head_a, 1);
     }
 }
 
@@ -31,12 +31,12 @@ static void prepare_stack_b(t_list **stack_head_b, t_list *cheapest, long stack_
     if (cheapest->target->index <= (stack_b_len / 2))
     {
         while ((*stack_head_b)->data != cheapest->target->data)
-            rotate_b(stack_head_b);
+            rotate_b(stack_head_b, 1);
     }
     else
     {
         while ((*stack_head_b)->data != cheapest->target->data)
-            reverse_rotate_b(stack_head_b);
+            reverse_rotate_b(stack_head_b, 1);
     }
 }
 

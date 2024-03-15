@@ -6,7 +6,7 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 09:25:06 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/14 16:41:36 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/15 17:18:16 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void put_min_on_top(t_list **stack_head_a)
 	min = find_smallest_nb(*stack_head_a);
 	if (min->index <= list_len(*stack_head_a) / 2)
 		while ((*stack_head_a)->data != min->data)
-			rotate_a(stack_head_a);
+			rotate_a(stack_head_a, 1);
 	else
 		while ((*stack_head_a)->data != min->data)
-			reverse_rotate_a(stack_head_a);
+			reverse_rotate_a(stack_head_a, 1);
 }
 
 void sort_three(t_list **stack_head_a)
@@ -31,11 +31,11 @@ void sort_three(t_list **stack_head_a)
 
 	biggest_nb = find_biggest_nb(*stack_head_a);
 	if (biggest_nb == *stack_head_a)
-		rotate_a(stack_head_a);
+		rotate_a(stack_head_a, 1);
 	else if ((*stack_head_a)->next == biggest_nb)
-		reverse_rotate_a(stack_head_a);
+		reverse_rotate_a(stack_head_a, 1);
 	if ((*stack_head_a)->data > (*stack_head_a)->next->data)
-		swap_a(stack_head_a);
+		swap_a(stack_head_a, 1);
 }
 
 void sort_stack(t_list **stack_head_a, t_list **stack_head_b)

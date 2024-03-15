@@ -6,7 +6,7 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 09:12:39 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/14 16:44:00 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/15 17:20:04 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ typedef struct s_list
         Sort instructions
                                 */
 
-void swap_a(t_list **stack_head_a);
-void swap_b(t_list **stack_head_b);
+void swap_a(t_list **stack_head_a, int sa);
+void swap_b(t_list **stack_head_b, int sb);
 void swap_a_and_b(t_list **stack_head_a, t_list **stack_head_b);
 void push_a(t_list **stack_head_a, t_list **stack_head_b);
 void push_b(t_list **stack_head_a, t_list **stack_head_b);
-void rotate_a(t_list **stack_head_a);
-void rotate_b(t_list **stack_head_b);
+void rotate_a(t_list **stack_head_a, int ra);
+void rotate_b(t_list **stack_head_b, int rb);
 void rotate_a_and_b(t_list **stack_head_a, t_list **stack_head_b);
-void reverse_rotate_a(t_list **stack_head_a);
-void reverse_rotate_b(t_list **stack_head_b);
+void reverse_rotate_a(t_list **stack_head_a, int rra);
+void reverse_rotate_b(t_list **stack_head_b, int rrb);
 void reverse_rotate_a_and_b(t_list **stack_head_a, t_list **stack_head_b);
 
 /*

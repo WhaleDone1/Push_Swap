@@ -6,7 +6,7 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:28 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/14 16:42:20 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/15 17:19:10 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int main(int argc, char **argv)
 	if (is_stack_sorted(stack_a) == 0)
 	{
 		if (list_len(stack_a) == 2)
-			swap_a(&stack_a);
+			swap_a(&stack_a, 1);
 		else if (list_len(stack_a) == 3)
 			sort_three(&stack_a);
 		else
