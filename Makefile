@@ -15,7 +15,7 @@ FLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 LIBFT_DIR = Libft
-PUSH_SWAP_DIR = Push_swap_srcs
+PUSH_SWAP_DIR = Push_Swap_srcs
 PRINTF_DIR = Printf
 SRCS =	$(LIBFT_DIR)/ft_atol.c $(LIBFT_DIR)/ft_split.c \
 	$(PUSH_SWAP_DIR)/swap.c $(PUSH_SWAP_DIR)/push.c $(PUSH_SWAP_DIR)/rotate.c \
