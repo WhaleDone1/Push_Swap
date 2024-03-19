@@ -6,11 +6,51 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 09:25:06 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/15 17:18:16 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/19 05:00:04 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
+#include "../Printf/ft_printf.h"
+
+int check_dupes(t_list *stack_head)
+{
+	t_list *current;
+	t_list *next;
+
+	if (stack_head == NULL)
+		return (0);
+	current = stack_head;
+	while (current != NULL)
+	{
+		next = current->next;
+		while (next != NULL)
+		{
+			if (current->data == next->data)
+				return (1);
+			next = next->next;
+		}
+		current = current->next;
+	}
+	return (0);
+}
+
+int check_syntax(char *str)
+{
+	int i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
 
 static void put_min_on_top(t_list **stack_head_a)
 {
@@ -60,5 +100,6 @@ void sort_stack(t_list **stack_head_a, t_list **stack_head_b)
 		move_b_to_a(stack_head_a, stack_head_b);
 	}
 	set_index(*stack_head_a);
-	put_min_on_top(stack_head_a);
+	if (is_stack_sorted(*stack_head_a) == 0)
+		put_min_on_top(stack_head_a);
 }

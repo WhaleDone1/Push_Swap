@@ -6,7 +6,7 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 09:12:39 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/15 17:20:04 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/19 04:56:39 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void reverse_rotate_a_and_b(t_list **stack_head_a, t_list **stack_head_b);
 
 int list_len(t_list *stack_head);
 int is_stack_sorted(t_list *stack_head);
+int check_dupes(t_list *stack_head);
+int check_syntax(char *str);
 t_list *find_biggest_nb(t_list *stack_head);
 t_list *find_smallest_nb(t_list *stack_head);
 t_list *find_cheapest_cost(t_list *stack_head);
@@ -58,5 +60,7 @@ void prepare_move_a(t_list *stack_head_a, t_list *stack_head_b);
 void prepare_move_b(t_list *stack_head_a, t_list *stack_head_b);
 void sort_three(t_list **stack_head_a);
 void sort_stack(t_list **stack_head_a, t_list **stack_head_b);
+void ft_free_list(t_list **list);
+void ft_free_split(char **str);
 
 #endif

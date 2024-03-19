@@ -6,15 +6,15 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:28 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/15 17:19:10 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/19 05:01:30 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../Libft/libft.h"
-#include "libft.h"
+#include "lib_push_swap.h"
+#include "../Libft/libft.h"
+#include "../Printf/ft_printf.h"
 #include "unistd.h"
 #include "stdio.h"
-#include "lib_push_swap.h"
 
 static void append_node(t_list **stack_head, int n)
 {
@@ -48,15 +48,22 @@ static void init_stack(t_list **stack_head, char **argv)
 	*stack_head = NULL;
 	while (argv[i])
 	{
-		// check_syntax(argv[i]);
+		if (check_syntax(argv[i]) == 0)
+		{
+			ft_free_list(stack_head);
+			return;
+		}
 		n = ft_atol(argv[i]);
-		// if (n > 2147483647 || n < -2147483648)
-		// free + error;
-		// if (check_dupes(*stack_head, (int)n))
-		// free + error;
+		if (n > 2147483647 || n < -2147483648)
+		{
+			ft_free_split(argv);
+			return;
+		}
 		append_node(stack_head, (int)n);
 		i++;
 	}
+	if (check_dupes(*stack_head) == 1)
+		ft_free_list(stack_head);
 }
 
 int is_stack_sorted(t_list *stack_head)
@@ -72,24 +79,18 @@ int is_stack_sorted(t_list *stack_head)
 	return (1); // sorted
 }
 
-/*free_stack(t_list **stack_head)
-{
-
-}*/
-
 void print_list(t_list *list)
 {
 	while (list != NULL)
 	{
-		printf("%d->", list->data);
+		ft_printf("%d->", list->data);
 		list = list->next;
 	}
-	printf("NULL");
+	ft_printf("NULL");
 }
 
 int main(int argc, char **argv)
 {
-	// int i;
 	int is_split;
 	t_list *stack_a;
 	t_list *stack_b;
@@ -115,10 +116,9 @@ int main(int argc, char **argv)
 		else
 			sort_stack(&stack_a, &stack_b);
 	}
-	// free_stack(&a);
-	// rotate_a(&stack_a);
 	print_list(stack_a);
+	ft_free_list(&stack_a);
 	if (is_split == 1)
-		free(argv);
+		ft_free_split(argv);
 	return (0);
 }
