@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarpent <bcarpent@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bcarpent <bcarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:28 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/20 11:02:08 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:10:07 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,28 +75,26 @@ int	is_stack_sorted(t_list *stack_head)
 	return (1);
 }
 
-static void	go_push_swap(t_list *stack_a, t_list *stack_b)
+static void	go_push_swap(t_list **stack_a, t_list **stack_b)
 {
-	set_index(&stack_a);
-	if (is_stack_sorted(stack_a) == 0)
+	set_index(stack_a);
+	if (is_stack_sorted(*stack_a) == 0)
 	{
-		if (list_len(stack_a) == 2)
-			swap_a(&stack_a, 1);
-		else if (list_len(stack_a) == 3)
-			sort_three(&stack_a);
+		if (list_len(*stack_a) == 2)
+			swap_a(stack_a, 1);
+		else if (list_len(*stack_a) == 3)
+			sort_three(stack_a);
 		else
-			sort_stack(&stack_a, &stack_b);
+			sort_stack(stack_a, stack_b);
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	int		is_split;
 	int		error;
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	is_split = 0;
 	stack_b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (0);
@@ -104,16 +102,14 @@ int	main(int argc, char **argv)
 	{
 		argv = ft_split(argv[1], ' ');
 		error = init_stack(&stack_a, argv);
-		is_split = 1;
+		ft_free_split(argv);
 	}
 	else
 		error = init_stack(&stack_a, argv + 1);
 	if (error == -1)
 		ft_printf("Error\n");
 	else
-		go_push_swap(stack_a, stack_b);
+		go_push_swap(&stack_a, &stack_b);
 	ft_free_list(&stack_a);
-	if (is_split == 1)
-		ft_free_split(argv);
 	return (0);
 }
