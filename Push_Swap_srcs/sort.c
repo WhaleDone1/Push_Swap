@@ -6,7 +6,7 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 09:25:06 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/19 09:30:25 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/20 07:23:57 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,10 @@ void sort_stack(t_list **stack_head_a, t_list **stack_head_b)
 {
 	int stack_a_len;
 
-	stack_a_len = (list_len(*stack_head_a) - 1);
-	push_b(stack_head_a, stack_head_b);
-	if (--stack_a_len > 3 && is_stack_sorted(*stack_head_a) == 0)
+	stack_a_len = (list_len(*stack_head_a));
+	if (stack_a_len-- > 3 && (is_stack_sorted(*stack_head_a) == 0))
+		push_b(stack_head_a, stack_head_b);
+	if (stack_a_len-- > 3 && is_stack_sorted(*stack_head_a) == 0)
 		push_b(stack_head_a, stack_head_b);
 	while (stack_a_len > 3 && is_stack_sorted(*stack_head_a) == 0)
 	{
