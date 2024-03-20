@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_move.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarpent <bcarpent@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bcarpent <bcarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:39:57 by barpent           #+#    #+#             */
-/*   Updated: 2024/03/20 11:05:16 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:30:11 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	prepare_move_a(t_list **stack_a, t_list **stack_b)
 	push_b(stack_a, stack_b);
 }
 
-void	prepare_move_b(t_list **stack_a, t_list **stack_b)
+/*void	prepare_move_b(t_list **stack_a, t_list **stack_b)
 {
 	long	stack_a_len;
 	long	stack_b_len;
@@ -74,4 +74,4 @@ void	prepare_move_b(t_list **stack_a, t_list **stack_b)
 	prepare_a(stack_b, cheapest_node, stack_b_len);
 	prepare_b(stack_a, cheapest_node, stack_a_len);
 	push_a(stack_a, stack_b);
-}
+}*/

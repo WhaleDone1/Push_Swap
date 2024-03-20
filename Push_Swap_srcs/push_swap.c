@@ -6,7 +6,7 @@
 /*   By: bcarpent <bcarpent@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:28 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/20 13:25:22 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/03/20 11:02:08 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	main(int argc, char **argv)
 	else
 		error = init_stack(&stack_a, argv + 1);
 	if (error == -1)
-		write(2, "Error\n", 6);
+		ft_printf("Error\n");
 	else
 		go_push_swap(stack_a, stack_b);
 	ft_free_list(&stack_a);
