@@ -3,84 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bcarpent <bcarpent@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 09:25:06 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/20 07:23:57 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/20 11:31:58 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 #include "../Printf/ft_printf.h"
 
-int check_dupes(t_list *stack_head)
+static void	put_min_on_top(t_list **a)
 {
-	t_list *current;
-	t_list *next;
+	t_list	*min;
 
-	if (stack_head == NULL)
-		return (0);
-	current = stack_head;
-	while (current != NULL)
-	{
-		next = current->next;
-		while (next != NULL)
-		{
-			if (current->data == next->data)
-				return (1);
-			next = next->next;
-		}
-		current = current->next;
-	}
-	return (0);
-}
-
-int check_syntax(char *str)
-{
-	int i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-static void put_min_on_top(t_list **stack_head_a)
-{
-	t_list *min;
-
-	min = find_smallest_nb(*stack_head_a);
-	if (min->index <= list_len(*stack_head_a) / 2)
-		while ((*stack_head_a)->data != min->data)
-			rotate_a(stack_head_a, 1);
+	min = find_smallest_nb(*a);
+	if (min->index <= list_len(*a) / 2)
+		while ((*a)->data != min->data)
+			rotate_a(a, 1);
 	else
-		while ((*stack_head_a)->data != min->data)
-			reverse_rotate_a(stack_head_a, 1);
+		while ((*a)->data != min->data)
+			reverse_rotate_a(a, 1);
 }
 
-void sort_three(t_list **stack_head_a)
+void	sort_three(t_list **stack_head_a)
 {
-	t_list *biggest_nb;
+	t_list	*biggest_nb_node;
 
-	biggest_nb = find_biggest_nb(*stack_head_a);
-	if (biggest_nb == *stack_head_a)
+	biggest_nb_node = find_biggest_nb(*stack_head_a);
+	if (biggest_nb_node->index == 0)
 		rotate_a(stack_head_a, 1);
-	else if ((*stack_head_a)->next == biggest_nb)
+	else if (biggest_nb_node->index == 1)
 		reverse_rotate_a(stack_head_a, 1);
-	if ((*stack_head_a)->data > (*stack_head_a)->next->data)
+	if (is_stack_sorted(*stack_head_a) == 0)
 		swap_a(stack_head_a, 1);
 }
 
-void sort_stack(t_list **stack_head_a, t_list **stack_head_b)
+void	sort_stack(t_list **stack_head_a, t_list **stack_head_b)
 {
-	int stack_a_len;
+	int	stack_a_len;
 
 	stack_a_len = (list_len(*stack_head_a));
 	if (stack_a_len-- > 3 && (is_stack_sorted(*stack_head_a) == 0))
@@ -89,17 +50,17 @@ void sort_stack(t_list **stack_head_a, t_list **stack_head_b)
 		push_b(stack_head_a, stack_head_b);
 	while (stack_a_len > 3 && is_stack_sorted(*stack_head_a) == 0)
 	{
-		prepare_move_a(*stack_head_a, *stack_head_b);
-		move_a_to_b(stack_head_a, stack_head_b);
+		set_target_a(stack_head_a, *stack_head_b);
+		sort_cost(*stack_head_a, *stack_head_b);
+		prepare_move_a(stack_head_a, stack_head_b);
 	}
 	if (is_stack_sorted(*stack_head_a) == 0)
 		sort_three(stack_head_a);
 	while (*stack_head_b != NULL)
 	{
-		prepare_move_b(*stack_head_a, *stack_head_b);
-		move_b_to_a(stack_head_a, stack_head_b);
+		set_target_b(stack_head_b, *stack_head_a);
+		sort_cost(*stack_head_b, *stack_head_a);
+		prepare_move_b(stack_head_a, stack_head_b);
 	}
-	set_index(*stack_head_a);
-	if (is_stack_sorted(*stack_head_a) == 0)
-		put_min_on_top(stack_head_a);
+	put_min_on_top(stack_head_a);
 }

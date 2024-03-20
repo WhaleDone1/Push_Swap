@@ -6,15 +6,15 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 09:15:55 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/03/14 16:41:00 by barpent          ###   ########.fr       */
+/*   Updated: 2024/03/20 11:12:24 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 
-int list_len(t_list *stack_head)
+int	list_len(t_list *stack_head)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (stack_head != NULL)
@@ -25,9 +25,9 @@ int list_len(t_list *stack_head)
 	return (i);
 }
 
-t_list *find_biggest_nb(t_list *stack_head)
+t_list	*find_biggest_nb(t_list *stack_head)
 {
-	t_list *biggest_nb;
+	t_list	*biggest_nb;
 
 	biggest_nb = stack_head;
 	while (stack_head->next != NULL)
@@ -39,9 +39,9 @@ t_list *find_biggest_nb(t_list *stack_head)
 	return (biggest_nb);
 }
 
-t_list *find_smallest_nb(t_list *stack_head)
+t_list	*find_smallest_nb(t_list *stack_head)
 {
-	t_list *smallest_nb;
+	t_list	*smallest_nb;
 
 	smallest_nb = stack_head;
 	while (stack_head->next != NULL)
@@ -53,9 +53,9 @@ t_list *find_smallest_nb(t_list *stack_head)
 	return (smallest_nb);
 }
 
-t_list *find_cheapest_cost(t_list *stack_head)
+t_list	*find_cheapest_cost(t_list *stack_head)
 {
-	t_list *cheapest;
+	t_list	*cheapest;
 
 	cheapest = stack_head;
 	stack_head = stack_head->next;
@@ -68,14 +68,17 @@ t_list *find_cheapest_cost(t_list *stack_head)
 	return (cheapest);
 }
 
-void set_index(t_list *stack_head)
+void	set_index(t_list **stack_head)
 {
-	int i = 0;
+	int		i;
+	t_list	*tmp;
 
-	while (stack_head != NULL)
+	i = 0;
+	tmp = *stack_head;
+	while (tmp != NULL)
 	{
-		stack_head->index = i;
+		tmp->index = i;
+		tmp = tmp->next;
 		i++;
-		stack_head = stack_head->next;
 	}
 }

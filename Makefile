@@ -6,7 +6,7 @@
 #    By: barpent <barpent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/11 09:19:23 by bcarpent          #+#    #+#              #
-#    Updated: 2024/03/19 05:00:34 by barpent          ###   ########.fr        #
+#    Updated: 2024/03/20 06:32:23 by barpent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ PRINTF_DIR = Printf
 SRCS =	$(LIBFT_DIR)/ft_atol.c $(LIBFT_DIR)/ft_split.c \
 	$(PUSH_SWAP_DIR)/swap.c $(PUSH_SWAP_DIR)/push.c $(PUSH_SWAP_DIR)/rotate.c \
 	$(PUSH_SWAP_DIR)/reverse_rotate.c $(PUSH_SWAP_DIR)/push_swap.c $(PUSH_SWAP_DIR)/push_swap_utils.c\
-	$(PUSH_SWAP_DIR)/prepare_move.c $(PUSH_SWAP_DIR)/move_a_to_b.c $(PUSH_SWAP_DIR)/move_b_to_a.c \
-	$(PUSH_SWAP_DIR)/sort.c $(PUSH_SWAP_DIR)/push_swap_free.c\
+	$(PUSH_SWAP_DIR)/prepare_move.c \
+	$(PUSH_SWAP_DIR)/sort.c $(PUSH_SWAP_DIR)/push_swap_free.c $(PUSH_SWAP_DIR)/push_swap_utils_2.c\
 	$(PRINTF_DIR)/ft_printf.c $(PRINTF_DIR)/ft_utils_printf.c $(PRINTF_DIR)/ft_putnbrptr_printf.c \
 	$(PRINTF_DIR)/ft_putnbrhexa_printf.c $(PRINTF_DIR)/ft_itoa.c $(PRINTF_DIR)/ft_uitoa.c
 
